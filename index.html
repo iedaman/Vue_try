@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hellow Vue !</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <style>
+   .tomato{
+     background-color:tomato;
+   }
+   .skyblue{
+     background-color:skyblue;
+   }
+   .orange{
+     background-color:orange;
+   }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    {{ number }}
+    <button v-on:click="countUp">Count Up!</button>
+    <div v-if="!number">条件次第で表示</div>
+    <ul>
+      <li v-for="item in items">繰り返し表示{{item}}</li>
+    </ul>
+    <div v-bind:class="any_color">カラー</div>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        number:0,
+        items:[1,2,3],
+        any_color:'tomato',
+        colors:["tomato","skyblue","orange"]
+      },
+      methods:{
+        countUp:function(){ 
+          this.number++;
+          this.any_color = this.colors[this.number % 3]
+        }
+      }
+    })
+  </script>
+</body>
+</html>
